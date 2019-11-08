@@ -9,6 +9,8 @@ import { IProduct } from './products';
 export class ProductDetailComponent implements OnInit {
   pageTitle: string = 'Product Detail';
   product: IProduct;
+  imageWidth: number = 250;
+  imageMargin: number = 2;
 
   constructor(private route: ActivatedRoute,
     private router: Router) { }

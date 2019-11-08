@@ -2,8 +2,44 @@
     <div class="card-header">
         {{ pageTitle + ':  ' + product.productName }}
     </div>
-</div>
-<div class='card-footer'>
-    <button class='btn btn-outline-secondary' (click)='onBack()' style="width:80px">
-        <i class='fa fa-chevron-left'></i> Back</button>
+
+    <div class="card-body">
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-4">
+                    <p>Name</p>
+                    <p>code</p>
+                    <p>Description</p>
+                    <p>Availability</p>
+                    <p>Price</p>
+                    <p>5 star Rating</p>
+
+                </div>
+                <div class="col-md-4">
+                    <p>
+                        <a [routerLink]="['/products' , product.productId]">
+                            {{ product.productName }}
+                        </a>
+                    </p>
+                    <p> {{ product.productCode | lowercase | convertToSpaces: '-'}}</p>
+                    <p> {{ product.description }}</p>
+                    <p> {{ product.releaseDate }}</p>
+                    <p> {{ product.price | currency:'USD':'symbol':'1.2-2' }}</p>
+                    <p>
+                        <pm-star [rating]='product.starRating' (ratingClicked)='onRatingClicked($event)'></pm-star>
+                    </p>
+                </div>
+                <div class="col-md-4">
+                    <img [src]='product.imageUrl' class="img-fluid" [title]='product.productName'
+                        [style.width.px]='imageWidth' [style.margin.px]="imageMargin" alt="productImage">
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class='card-footer'>
+        <button class='btn btn-outline-secondary' (click)='onBack()' style="width:80px">
+            <i class='fa fa-chevron-left'></i> Back</button>
+    </div>
 </div>
